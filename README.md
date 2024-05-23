@@ -1,2 +1,2 @@
-# Bases-de-datos-ITM
+# Bases-de-datos-IT
 Bd 1 curso

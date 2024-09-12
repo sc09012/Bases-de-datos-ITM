@@ -1,4 +1,4 @@
--- Define ENUM types
+-- Definir ENUM types
 CREATE TYPE ENERGY_TYPE AS ENUM (
     'nuclear',
     'solar'
@@ -14,7 +14,7 @@ CREATE TYPE MATERIAL_TYPE AS ENUM (
     'glass'
 );
 
--- Create table for Spaceship
+-- Crear  table Spaceship
 CREATE TABLE spaceship (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE spaceship (
     year_of_construction INT NOT NULL
 );
 
--- Create table for PowerPlant
+-- Crear table  PowerPlant
 CREATE TABLE powerplant (
     id SERIAL PRIMARY KEY,
     spaceship_id INT REFERENCES spaceship(id) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE powerplant (
     capacity FLOAT NOT NULL
 );
 
--- Create table for ObservationWindow
+-- Crear table  ObservationWindow
 CREATE TABLE observationwindow (
     id SERIAL PRIMARY KEY,
     spaceship_id INT REFERENCES spaceship(id) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE observationwindow (
     material MATERIAL_TYPE NOT NULL
 );
 
--- Create table for Airlock
+-- Crear table for Airlock
 CREATE TABLE airlock (
     id SERIAL PRIMARY KEY,
     spaceship_id INT REFERENCES spaceship(id) NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE airlock (
     type AIRLOCK_TYPE NOT NULL
 );
 
--- Create table for MovingObject
+-- Crear table  MovingObject
 CREATE TABLE movingobject (
     id SERIAL PRIMARY KEY,
     time_sighted TIMESTAMP NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE movingobject (
     spaceship_id INT REFERENCES spaceship(id) NOT NULL
 );
 
--- Create table for CrewMember
+-- Crear table  CrewMember
 CREATE TABLE crewmember (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE crewmember (
     spaceship_id INT REFERENCES spaceship(id) NOT NULL
 );
 
--- Create table for MaintenanceAssignment (many-to-many relationship)
+-- Crear  table  MaintenanceAssignment (many-to-many relationship)
 CREATE TABLE maintenanceassignment (
     crewmember_id INT REFERENCES crewmember(id) NOT NULL,
     powerplant_id INT REFERENCES powerplant(id) NOT NULL,
